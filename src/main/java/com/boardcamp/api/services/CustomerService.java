@@ -21,7 +21,10 @@ public class CustomerService {
   }
   
   public Optional<CustomerModel> findCustomerById(Long id) {
-
+    Optional<CustomerModel> customerOptional = customerRepository.findById(id);
+    if (customerOptional.isEmpty()) {
+      throw new NotFoundError("Customer not found");
+    }
     return customerRepository.findById(id);
   }
   

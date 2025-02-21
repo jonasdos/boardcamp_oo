@@ -56,6 +56,23 @@ public class GameService {
     }
   }
 
+  public boolean stockAvailable(Long id) {
+    Optional<GameModel> game = gameRepository.findById(id);
+    return game.get().getStockTotal() > 0;
+  }
+
+  public void rentGame(Long id) {
+    Optional<GameModel> game = gameRepository.findById(id);
+    game.get().setStockTotal(game.get().getStockTotal() - 1);
+    gameRepository.save(game.get());
+  }
+
+  public void returnGame(Long id) {
+    Optional<GameModel> game = gameRepository.findById(id);
+    game.get().setStockTotal(game.get().getStockTotal() + 1);
+    gameRepository.save(game.get());
+  }
+
   public void delete(Long id) {
     if (gameRepository.existsById(id)) {
       gameRepository.deleteById(id);
