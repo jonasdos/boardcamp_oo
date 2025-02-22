@@ -25,7 +25,7 @@ public class CustomerService {
     if (customerOptional.isEmpty()) {
       throw new NotFoundError("Customer not found");
     }
-    return customerRepository.findById(id);
+    return customerOptional;
   }
   
   public Optional<CustomerModel> findCustomerByCpf(String cpf) {

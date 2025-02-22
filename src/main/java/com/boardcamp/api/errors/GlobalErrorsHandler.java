@@ -15,6 +15,10 @@ public class GlobalErrorsHandler {
   public ResponseEntity<String> handlerNotFound(NotFoundError body) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body.getMessage());
   }
+  @ExceptionHandler({ConflictError.class})
+  public ResponseEntity<String> handlerConflict(ConflictError body) {
+    return ResponseEntity.status(HttpStatus.CONFLICT).body(body.getMessage());
+  }
 
 
 }

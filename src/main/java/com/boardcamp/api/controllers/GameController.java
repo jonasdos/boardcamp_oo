@@ -28,14 +28,6 @@ public class GameController {
 
   @PostMapping()
   public ResponseEntity<Object> createGame(@RequestBody @Valid GameDTO body) {
-    Optional<GameModel> game = gameService.findByName(body.getName());
-    if (game.isPresent()) {
-      return ResponseEntity.status(HttpStatus.CONFLICT).body("Game is already registered");
-    }
-    Optional<GameModel> gameimg = gameService.findByImage(body.getImage());
-    if (gameimg.isPresent()) {
-      return ResponseEntity.status(HttpStatus.CONFLICT).body("The image is already registered an another game");
-    }
     GameModel newGame = gameService.save(body);
     return ResponseEntity.status(HttpStatus.CREATED).body(newGame);
   }
