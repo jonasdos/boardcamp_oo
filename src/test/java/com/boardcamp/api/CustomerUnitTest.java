@@ -89,10 +89,7 @@ class CustomerUnitTest {
   @Test
   void givenCustomerDTO_whenCreateCustomer_thenReturnSavedCustomer() {
     //given
-    CustomerDTO customerDTO = new CustomerDTO();
-    customerDTO.setName("John Doe");
-    customerDTO.setPhone("123456789");
-    customerDTO.setCpf("12345678900");
+    CustomerDTO customerDTO = new CustomerDTO("John Doe", "123456789", "12345678900");
     CustomerModel customer = new CustomerModel(customerDTO);
     when(customerRepository.save(any(CustomerModel.class))).thenReturn(customer);
 
@@ -109,10 +106,7 @@ class CustomerUnitTest {
   @Test
   void givenCustomerIdAndDTO_whenUpdateCustomer_thenReturnUpdatedCustomer() {
     //given
-    CustomerDTO customerDTO = new CustomerDTO();
-    customerDTO.setName("Jane Doe");
-    customerDTO.setPhone("987654321");
-    customerDTO.setCpf("09876543210");
+    CustomerDTO customerDTO = new CustomerDTO("Jane Doe", "987654321", "09876543210");
     CustomerModel customer = new CustomerModel();
     customer.setId(1L);
     when(customerRepository.findById(1L)).thenReturn(Optional.of(customer));

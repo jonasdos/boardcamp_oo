@@ -18,4 +18,9 @@ public class CustomerDTO {
   @Size(min = 11, max = 11, message = "The cpf must have 11 characters") 
   private String cpf; 
 
+  public CustomerDTO(String name, String phone, String cpf) {
+    this.name = name;
+    this.phone = phone;
+    this.cpf = cpf;
+  }
 }
