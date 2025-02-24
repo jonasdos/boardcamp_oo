@@ -27,5 +27,10 @@ public class GameDTO {
   @NotNull(message = "O preço por dia não pode ser nulo")
   @Min(value = 1, message = "O preço por dia deve ser maior ou igual a 0")
   private int pricePerDay;
-
+  public GameDTO(String name, String image, int stockTotal, int pricePerDay) {
+    this.name = name;
+    this.image = image;
+    this.stockTotal = stockTotal;
+    this.pricePerDay = pricePerDay;
+  }
 }

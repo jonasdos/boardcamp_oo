@@ -66,8 +66,7 @@ class GameUnitTests {
   @Test
   void givenGameDTO_whenGameNameExists_thenThrowConflictError() {
     //given
-    GameDTO gameDTO = new GameDTO();
-    gameDTO.setName("Test Game");
+    GameDTO gameDTO = new GameDTO("Test Game", "test_image.png", 10, 10);
     when(gameRepository.findByName("Test Game")).thenReturn(Optional.of(new GameModel(gameDTO)));
 
     //when
@@ -81,8 +80,7 @@ class GameUnitTests {
   @Test
   void givenGameDTO_whenGameImageExists_thenThrowConflictError() {
     //given
-    GameDTO gameDTO = new GameDTO();
-    gameDTO.setImage("test_image.png");
+    GameDTO gameDTO = new GameDTO("Test Game", "test_image.png", 10, 10);
     when(gameRepository.findByImage("test_image.png")).thenReturn(Optional.of(new GameModel()));
 
     //when
@@ -95,9 +93,7 @@ class GameUnitTests {
   @Test
   void givenGameDTO_whenGameDoesNotExist_thenSaveGame() {
     //given
-    GameDTO gameDTO = new GameDTO();
-    gameDTO.setName("New Game");
-    gameDTO.setImage("new_image.png");
+    GameDTO gameDTO = new GameDTO("New Game", "new_image.png", 10, 10);
     when(gameRepository.findByName("New Game")).thenReturn(Optional.empty());
     when(gameRepository.findByImage("new_image.png")).thenReturn(Optional.empty());
     when(gameRepository.save(any(GameModel.class))).thenReturn(new GameModel(gameDTO));
