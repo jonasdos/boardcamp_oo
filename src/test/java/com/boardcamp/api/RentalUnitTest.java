@@ -34,9 +34,9 @@ class RentalUnitTest {
   @Test
   void givenRentalDTO_whenCreateRental_thenReturnSavedRental() {
     //given
-    RentalDTO rentalDTO = new RentalDTO();
-    CustomerModel customer = new CustomerModel();
-    GameModel game = new GameModel();
+    RentalDTO rentalDTO = new RentalDTO(1L, 1L, 3);
+    CustomerModel customer = new CustomerModel(1L, "customer", "1234567891", "12345678912");
+    GameModel game = new GameModel(1L, "game", "game", 10, 10);
     RentalModel rental = new RentalModel(rentalDTO, Optional.of(customer), Optional.of(game));
     when(rentalRepository.save(any(RentalModel.class))).thenReturn(rental);
 

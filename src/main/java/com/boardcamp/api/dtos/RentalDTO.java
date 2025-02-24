@@ -19,4 +19,9 @@ public class RentalDTO {
   @NotNull
   @Min(1)
   private int daysRented;
+  public RentalDTO(Long gameId, Long customerId, int daysRented) {
+    this.gameId = gameId;
+    this.customerId = customerId;
+    this.daysRented = daysRented;
+  }
 }
