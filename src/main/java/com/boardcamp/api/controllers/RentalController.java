@@ -61,6 +61,7 @@ public ResponseEntity<Object> returnRental(@PathVariable Long id) {
   if (rental.get().getReturnDate() != null) {
     return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("Rental already returned");
   }
+  gameService.returnGame(rental.get().getGame().getId());
   RentalModel finishedRental = rentalService.returnRental(id);
   return ResponseEntity.status(HttpStatus.OK).body(finishedRental);
 }

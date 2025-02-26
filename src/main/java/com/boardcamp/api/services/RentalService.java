@@ -45,7 +45,7 @@ public class RentalService {
   }
 
   public void deleteRental(Long id) {
-     
+    findRentalById(id);
     rentalRepository.deleteById(id);
   }
 
